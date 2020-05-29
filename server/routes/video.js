@@ -59,7 +59,7 @@ router.post("/thumbnail", (req, res) => {
             return res.json({success: true, thumbsFilePath: thumbsFilePath, fileDuration: fileDuration})
         })
         .screenshots({
-            count: 3,
+            count: 1,
             folder: 'uploads/thumbnails',
             size:"320x240",
             filename: "thumbnail-%b.png"
@@ -75,6 +75,16 @@ router.post("/uploadVideo", (req, res) => {
             return res.status(400).json({success: false, err})
         }
         return res.status(200).json({success: true})
+    })
+
+})
+
+router.get("/getVideos", (req, res) => {
+    Video.find().populate('writer').exec((err, videos) => {
+        if (err) {
+            return res.status(400).send(err);
+        }
+        return res.status(200).json({success: true, videos})
     })
 
 })

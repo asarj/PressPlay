@@ -4,6 +4,7 @@ const multer = require('multer');
 var ffmpeg = require('fluent-ffmpeg');
 const { User } = require("../models/User");
 const { Video } = require("../models/Video");
+const { Subscriber } = require("../models/Subscriber"); 
 const { auth } = require("../middleware/auth");
 
 var storage = multer.diskStorage({
@@ -25,7 +26,7 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage }).single("file")
 
 //=================================
-//             User
+//             Video
 //=================================
 
 router.post("/uploadfiles", (req, res) => {
@@ -74,20 +75,49 @@ router.post("/uploadVideo", (req, res) => {
         if (err) {
             return res.status(400).json({success: false, err})
         }
-        return res.status(200).json({success: true})
+        return res.status(200).json({success: true});
     })
 
-})
+});
 
 router.get("/getVideos", (req, res) => {
     Video.find().populate('writer').exec((err, videos) => {
         if (err) {
             return res.status(400).send(err);
         }
-        return res.status(200).json({success: true, videos})
+        return res.status(200).json({success: true, videos});
     })
 
-})
+});
 
+router.post("/getVideo", (req, res) => {
+
+    Video.findOne({ "_id" : req.body.videoId }).populate('writer').exec((err, video) => {
+        if(err) return res.status(400).send(err);
+        res.status(200).json({ success: true, video })
+    })
+
+});
+
+router.post("/getSubscriptionVideos", (req, res) => {
+
+    Subscriber.find({ 'userFrom': req.body.userFrom })
+    .exec((err, subscribers)=> {
+        if(err) return res.status(400).send(err);
+
+        let subscribedUser = [];
+
+        subscribers.map((subscriber, i)=> {
+            subscribedUser.push(subscriber.userTo)
+        })
+
+        Video.find({ writer: { $in: subscribedUser }})
+            .populate('writer')
+            .exec((err, videos) => {
+                if(err) return res.status(400).send(err);
+                res.status(200).json({ success: true, videos })
+            })
+    })
+});
 
 module.exports = router;

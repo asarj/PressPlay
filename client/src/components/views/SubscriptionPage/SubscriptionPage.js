@@ -1,21 +1,22 @@
-import React, {useEffect, useState} from 'react'
-import { FaCode } from "react-icons/fa";
+import React, {useEffect, useState} from 'react';
 import {Card, Avatar, Col, Row, Typography} from 'antd';
 import axios from 'axios';
 import moment from 'moment';
 const {Title} = Typography;
 const {Meta} = Card;
 
-function LandingPage() {
+function SubscriptionPage() {
 
     const [videos, setVideos] = useState([]);
 
+    let variable = {userFrom: localStorage.getItem('userId')};
+
     useEffect(() => {
-        axios.get('api/video/getVideos').then(response => {
+        axios.post('api/video/getSubscriptionVideos', variable).then(response => {
             if(response.data.success) {
                 setVideos(response.data.videos);
             } else {
-                alert("Failed to retrieve videos");
+                alert("Failed to retrieve subscription videos");
             }
         })
     }, [])
@@ -53,7 +54,7 @@ function LandingPage() {
 
     return (
         <div style={{width: '85%', margin: '3rem auto'}}>
-            <Title level={2}> Recommended </Title>
+            <Title level={2}> Subscribed Videos </Title>
             <hr/>
             <Row gutter={16}>
                 {renderCards}
@@ -64,4 +65,4 @@ function LandingPage() {
     )
 }
 
-export default LandingPage
+export default SubscriptionPage;

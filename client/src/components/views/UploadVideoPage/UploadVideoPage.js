@@ -70,7 +70,7 @@ function UploadVideoPage(props) {
         }
 
         if(title === "" || description === "" || categories === "" 
-            || filePath === "" || duration == "" || thumbnail == "") {
+            || filePath === "" || duration === "" || thumbnail === "") {
             return alert("Fill in all fields before submitting!");
         }
 

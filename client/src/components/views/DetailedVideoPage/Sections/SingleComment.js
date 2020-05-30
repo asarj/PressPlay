@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Comment, Avatar, Button, Input } from 'antd';
 import Axios from 'axios';
 import { useSelector } from 'react-redux';
+import LikeDislike from './LikeDislike'
 
 const { TextArea } = Input;
 
@@ -42,7 +43,7 @@ function SingleComment(props) {
     }
 
     const actions = [
-        // <LikeDislikes comment commentId={props.comment._id} userId={localStorage.getItem('userId')} />,
+        <LikeDislike video comment commentId={props.comment._id} userId={localStorage.getItem('userId')} />,
         <span onClick={openReply} key="comment-basic-reply-to">{!openReplyPrompt ? "Reply to " + props.comment.writer.name : "Cancel"}</span>
     ]
 

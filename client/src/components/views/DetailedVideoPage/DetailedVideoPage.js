@@ -52,7 +52,7 @@ function DetailedVideoPage(props) {
 
                         <List.Item
                             actions={[
-                                <LikeDislike />, 
+                                <LikeDislike video videoId={videoId} userId={localStorage.getItem('userId')} />, 
                                 <SubscriberPane userTo={video.writer._id} userFrom={localStorage.getItem('userId')} />]}>
                             <List.Item.Meta
                                 avatar={<Avatar src={video.writer && video.writer.image} />}

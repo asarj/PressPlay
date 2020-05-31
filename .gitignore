@@ -17,4 +17,3 @@ yarn-error.log*
 # Other
 /server/config/dev.js
 /videos
-/uploads

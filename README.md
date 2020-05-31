@@ -60,7 +60,11 @@ $ npm run dev
 10. Visit `localhost:3000` to check it out!
 
 ## Features
+### Sign Up Page
+![Sign Up Page](./readme-images/signup.png)
 
+### Sign In Page
+![Login Page](./readme-images/login.png)
 
 
 ## In Progress / Coming Soon

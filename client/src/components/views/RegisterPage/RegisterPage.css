@@ -1,0 +1,4 @@
+.ant-row .ant-form-item{
+    @extend .ant-row .ant-form-item;
+    color: white;
+}

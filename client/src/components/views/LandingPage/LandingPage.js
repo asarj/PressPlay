@@ -29,7 +29,7 @@ function LandingPage() {
         }
         
         return (
-            <Col lg={6} md={8} xs={24}>
+            <Col lg={6} md={8} xs={24} style={{paddingBottom: '25px'}}>
                 <div style={{position: "relative"}}>
                     <a href={`/video/${video._id}`}>
                     <img style={{width: "100%"}} alt="thumbnail" src={`http://localhost:5000/${video.thumbnail}`} />
@@ -61,7 +61,7 @@ function LandingPage() {
         <div style={{width: '85%', margin: '3rem auto'}}>
             <Title level={2} style={{color: 'rgb(253, 253, 253)'}}> Recommended </Title>
             <hr style={{borderColor: 'rgb(40,40,40)'}}/>
-            <Row gutter={16}>
+            <Row gutter={16} style={{paddingTop: '30px'}}>
                 {renderCards}
             </Row>
             

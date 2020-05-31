@@ -74,7 +74,7 @@ function SingleComment(props) {
 
 
             {openReplyPrompt &&
-                <form style={{ display: 'flex' }} onSubmit={onSubmit}>
+                <form style={{ display: 'flex', height: '39px' }} onSubmit={onSubmit}>
                     <TextArea
                         style={{ width: '50%', borderRadius: '5px', marginLeft: '50px' }}
                         onChange={handleChange}
@@ -82,7 +82,7 @@ function SingleComment(props) {
                         placeholder={"Reply to " + props.comment.writer.name}
                     />
                     <br />
-                    <Button style={{ width: '100px', height: '52px', backgroundColor: 'rgb(37, 141, 252)', color: 'white' }} onClick={onSubmit}>Submit</Button>
+                    <Button style={{ width: '100px', height: '35px', backgroundColor: 'rgb(37, 141, 252)', color: 'white' }} onClick={onSubmit}>Submit</Button>
                 </form>
             }
         </div>

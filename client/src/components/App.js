@@ -19,7 +19,7 @@ function App() {
   return (
     <Suspense fallback={(<Spin size="large" />)}>
       <NavBar />
-      <div style={{ paddingTop: '69px', minHeight: 'calc(100vh - 80px)', backgroundColor: 'rgb(24,24,24)'}}>
+      <div style={{ paddingTop: '69px', minHeight: 'calc(100vh)', backgroundColor: 'rgb(24,24,24)'}}>
         <Switch>
           <Route exact path="/" component={Auth(LandingPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />

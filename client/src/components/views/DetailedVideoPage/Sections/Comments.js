@@ -55,7 +55,7 @@ function Comments(props) {
                 )
             ))}
 
-            <form style={{ display: 'flex' }} onSubmit={onSubmit}>
+            <form style={{ display: 'flex', height: '39px'}} onSubmit={onSubmit}>
                 <TextArea
                     style={{ width: '100%', borderRadius: '5px' }}
                     onChange={handleChange}
@@ -63,7 +63,7 @@ function Comments(props) {
                     placeholder="Leave a comment!"
                 />
                 <br />
-                <Button style={{ width: '20%', height: '52px' }} onClick={onSubmit}>Submit</Button>
+                <Button style={{ width: '20%', height: '35px', backgroundColor: 'rgb(37, 141, 252)', color: 'white'}} onClick={onSubmit}>Submit</Button>
             </form>
 
         </div>

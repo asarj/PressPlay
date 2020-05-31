@@ -40,7 +40,7 @@ function ReplyComment(props) {
         <div>
 
             {childComponentCount > 0 &&
-                <p style={{ fontSize: '14px', margin: 0, color: 'gray' }}
+                <p style={{ fontSize: '14px', color: 'gray' }}
                     onClick={handleChange} >
                     {!openReplyComments ? 
                         "View " + childComponentCount + (childComponentCount > 1 ? " more comments": " more comment") :
